@@ -12,14 +12,6 @@ class Tooltip extends HTMLElement {
                     position: absolute;
                     z-index: 10;
                 }
-
-                .highlight {
-                    background-color: red;
-                }
-
-                ::slotted(.highlight) {
-                    border-bottom: 1px dotted red;
-                }
             </style>
             <slot></slot>
             <span> (?)</span>
@@ -49,10 +41,3 @@ class Tooltip extends HTMLElement {
 }
 
 customElements.define('uc-tooltip', Tooltip);
-
-// Slotted text will not take styles defined on the component, 
-// unless you use the ::slotted() selector.
-// To style ANY slotted content, use ::slotted(*).
-// Note, you can't style nested components this way, i.e. .highlight div.
-// Styles applied to the same element in the shadow dom will be overridden 
-// by anything that was applied in the light dom
