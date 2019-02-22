@@ -5,27 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Components</title>
-    <style>
+    <script src="confirm-link.js"></script>
+    <script src="modal.js"></script>
 
+    <style>
+    
         * {
             box-sizing: border-box;
         }
-        
-        html {
-            --color-primary: #a4e6fc;
+
+        body {
+            margin: 2rem;
             font-family: sans-serif;
         }
-
-       
+    
     </style>
-    <script src="tooltip.js"></script>
-    <script src="confirm-link.js"></script>
+    
 </head>
+
 <body>
-    <p><uc-tooltip class="important" text="Web Components are defined by a set of standards.">
-        <span class="highlight">Web Components</span>
-    </uc-tooltip> are awesome!</p>
-    <uc-tooltip>Second Tooltip</uc-tooltip>
-    <a is="uc-confirm-link" href="https://github.com/SpiderRam/udemy-stencil" target="_blank">VisualBI</a>
+    <uc-modal>
+        <h1 slot="title">Please Confirm</h1>
+        <p>With your confirmation, you agree to pay the full amount.</p>
+    </uc-modal>
+    <p>Please confirm your choice.</p>
+    <button>Show Details and Confirm</button>
+    
+    <script>
+        const confirmButton = document.querySelector('button');
+        const modal = document.querySelector('uc-modal');
+
+        modal.addEventListener('confirm', () => {
+            console.log("Confirmed....");
+        });
+
+        modal.addEventListener('cancel', () => {
+            console.log("Cancelled....");
+        });
+
+        confirmButton.addEventListener('click', () => {
+            // modal.setAttribute('opened', '')
+            if (!modal.isOpen) {
+                modal.open();
+            }
+        })
+    </script>
 </body>
+
 </html>
