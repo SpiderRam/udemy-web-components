@@ -127,7 +127,8 @@ class Tooltip extends HTMLElement {
 customElements.define('uc-tooltip', Tooltip);
 
 // -----------------------------------------------------------------------
-// Slotted text will not take styles defined on the component, 
+// Since it is actually part of the light DOM, not the shadow DOM, 
+// slotted text will not take styles defined on the component, 
 // unless you use the ::slotted() selector.
 // To style ANY slotted content, use ::slotted(*).
 // Note, you can't style nested components this way, i.e. .highlight div.
